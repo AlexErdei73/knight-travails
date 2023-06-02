@@ -1,0 +1,26 @@
+{
+  "name": "knight-travails",
+  "version": "1.0.0",
+  "description": "This project is the closing piece of the DSA mini course of The Odin Project. You can find more about it on [the website](https://www.theodinproject.com/lessons/javascript-knights-travails) of the project.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexErdei73/knight-travails.git"
+  },
+  "author": "Alex Erdei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexErdei73/knight-travails/issues"
+  },
+  "homepage": "https://github.com/AlexErdei73/knight-travails#readme",
+  "devDependencies": {
+    "ts-loader": "^9.4.3",
+    "typescript": "^5.0.4",
+    "webpack": "^5.85.0",
+    "webpack-cli": "^5.1.1"
+  }
+}

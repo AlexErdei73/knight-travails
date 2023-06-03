@@ -1,1 +1,21 @@
-console.log("Typescript is running!");
+const boardContainer = document.querySelector(".chess-board")!;
+
+function createChessBoard() {
+  for (let row = 0; row < 8; row++) {
+    for (let col = 0; col < 8; col++) {
+      const boardCell = document.createElement("div");
+      boardCell.classList.add("board-cell");
+      let color;
+      if (col % 2 === 0) color = "bright";
+      else color = "dark";
+      if (row % 2 === 1)
+        if (color === "bright") color = "dark";
+        else color = "bright";
+      console.log(color);
+      boardCell.classList.add(color);
+      boardContainer.appendChild(boardCell);
+    }
+  }
+}
+
+createChessBoard();

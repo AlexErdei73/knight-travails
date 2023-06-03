@@ -1,1 +1,1 @@
-(()=>{"use strict";console.log("Typescript is running!")})();
+(()=>{"use strict";const t=document.querySelector(".chess-board");!function(){for(let e=0;e<8;e++)for(let c=0;c<8;c++){const d=document.createElement("div");let o;d.classList.add("board-cell"),o=c%2==0?"bright":"dark",e%2==1&&(o="bright"===o?"dark":"bright"),console.log(o),d.classList.add(o),t.appendChild(d)}}()})();

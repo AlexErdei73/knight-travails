@@ -3,11 +3,13 @@
 }
 
 .chess-board {
-  with: 100%;
+  width: 100%;
   max-width: 600px;
   background: lightgray;
   display: flex;
   flex-wrap: wrap;
+  position: relative;
+  margin: auto;
 }
 
 .board-cell {
@@ -22,4 +24,17 @@
 
 .dark {
   background: black;
+}
+
+.knight {
+  width: 12.5%;
+  height: auto;
+  border-radius: 50%;
+  border: 2px solid black;
+  box-sizing: border-box;
+  position: absolute;
+}
+
+.animate {
+  transition: all 1s linear;
 }

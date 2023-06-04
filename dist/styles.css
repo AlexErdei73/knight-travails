@@ -4,7 +4,7 @@
 
 .chess-board {
   width: 100%;
-  max-width: 600px;
+  max-width: min(500px, calc(100vh - 6rem));
   background: lightgray;
   display: flex;
   flex-wrap: wrap;
@@ -36,5 +36,5 @@
 }
 
 .animate {
-  transition: all 1s linear;
+  transition: all 0.5s ease-in-out;
 }

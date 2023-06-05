@@ -42,3 +42,22 @@ function handleSwapFormWithChessBoard() {
 }
 
 buttonSwap.addEventListener("click", handleSwapFormWithChessBoard);
+
+const form = document.querySelector("form")!;
+
+function handleSubmit(event: Event) {
+  event.preventDefault();
+  const formElements = form.elements;
+  const names = ["start-x", "start-y", "end-x", "end-y"];
+  const results = names.map(
+    (name: string) =>
+      +(formElements.namedItem(name)! as HTMLSelectElement).value
+  );
+  knight.positions = [
+    [results[0], results[1]],
+    [results[2], results[3]],
+  ];
+  knight.animate();
+}
+
+form.addEventListener("submit", handleSubmit);

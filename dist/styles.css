@@ -73,7 +73,26 @@ body {
   overflow: auto;
 }
 
-button {
+form {
+  width: calc(100% - 1rem);
+  margin: 0.5rem;
+}
+
+.form-control {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.form-control label {
+  display: inline-block;
+  width: 130px;
+}
+
+.form-control div {
+  display: inline-block;
+}
+
+#btn-swap {
   display: block;
   margin: 1rem auto;
 }

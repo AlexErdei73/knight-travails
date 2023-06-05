@@ -16,15 +16,57 @@
   </div>
   <div class="form-container animate spin-out invisible">
     <form action="">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Mauris ac consequat tellus. Nunc sollicitudin nibh quam, vitae
-      commodo libero vestibulum ac. Integer condimentum placerat
-      felis, vitae hendrerit enim consequat non. Ut dapibus neque magna,
-      sit amet eleifend velit lacinia at. Vestibulum suscipit interdum
-      enim eget venenatis. Nullam iaculis odio id magna dictum,
-      in eleifend ex tincidunt. Sed id condimentum diam. Aliquam mollis
-      est orci, eget tristique magna laoreet ut. Nam fringilla feugiat
-      justo, vel feugiat nisl malesuada porttitor.
+      <div class="form-control">
+        <label for="start-x">Start Position</label>
+        <div>
+          <select name="start-x" id="start-x">
+            <option value="0">a</option>
+            <option value="1">b</option>
+            <option value="2">c</option>
+            <option value="3">d</option>
+            <option value="4">e</option>
+            <option value="5">f</option>
+            <option value="6">g</option>
+            <option value="7">h</option>
+          </select>
+          <select name="start-y" id="start-y">
+            <option value="0">1</option>
+            <option value="1">2</option>
+            <option value="2">3</option>
+            <option value="3">4</option>
+            <option value="4">5</option>
+            <option value="5">6</option>
+            <option value="6">7</option>
+            <option value="7">8</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-control">
+        <label for="wnd-x">End Position</label>
+        <div>
+          <select name="emd-x" id="end-x">
+            <option value="0">a</option>
+            <option value="1">b</option>
+            <option value="2">c</option>
+            <option value="3">d</option>
+            <option value="4">e</option>
+            <option value="5">f</option>
+            <option value="6">g</option>
+            <option value="7">h</option>
+          </select>
+          <select name="end-y" id="end-y">
+            <option value="0">1</option>
+            <option value="1">2</option>
+            <option value="2">3</option>
+            <option value="3">4</option>
+            <option value="4">5</option>
+            <option value="5">6</option>
+            <option value="6">7</option>
+            <option value="7">8</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn">Submit</button>
     </form>
   </div>
   <button type="button" class="btn" id="btn-swap">Form</button>

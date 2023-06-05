@@ -1,17 +1,9 @@
 import chessBoard from "./chessBoard";
 import knight from "./knight";
-
-const POSITIONS: [x: number, y: number][] = [
-  [5, 5],
-  [6, 3],
-  [7, 1],
-  [5, 2],
-  [3, 3],
-];
+import { Tree, TreeNode, Position } from "./tree";
 
 chessBoard.create();
-knight.positions = POSITIONS;
-knight.animate();
+knight.positions = [];
 
 const formContainer = document.querySelector(".form-container")!;
 const buttonSwap = document.querySelector("#btn-swap")!;

@@ -2,6 +2,7 @@ class Knight {
   private knight: HTMLElement;
   private _positions: [x: number, y: number][] = [];
   private ANIM_STEP_DURATION = 500;
+  private animationID: NodeJS.Timer | undefined;
   constructor(knight: HTMLElement) {
     this.knight = knight;
   }
@@ -22,7 +23,7 @@ class Knight {
 
   animate() {
     let i = 0;
-    setInterval(() => {
+    this.animationID = setInterval(() => {
       if (i === this._positions.length) {
         i = 0;
         this.knight.classList.remove("animate");
@@ -33,6 +34,10 @@ class Knight {
       else this.moveTo(nextPosition);
       i++;
     }, 3 * this.ANIM_STEP_DURATION);
+  }
+
+  stopAnimation() {
+    if (this.animationID) clearInterval(this.animationID);
   }
 
   set positions(positions: [x: number, y: number][]) {

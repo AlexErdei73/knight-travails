@@ -4,7 +4,6 @@ import { Tree, Position } from "./tree";
 
 chessBoard.create();
 knight.positions = [[0, 0]];
-knight.animate();
 
 const formContainer = document.querySelector(".form-container")!;
 const buttonSwap = document.querySelector("#btn-swap")!;
@@ -80,4 +79,16 @@ function handleSubmit(event: Event) {
 	knight.animate();
 }
 
+function sizeFormContainer() {
+	let height = window.innerHeight - 160;
+	if (height > 500) height = 500;
+	if (height < 150) height = 150;
+	formContainer.setAttribute(
+		"style",
+		`height: ${height}px; width: ${height}px`
+	);
+}
+
 form.addEventListener("submit", handleSubmit);
+window.addEventListener("resize", sizeFormContainer);
+sizeFormContainer();

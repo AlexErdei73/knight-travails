@@ -39,10 +39,7 @@ buttonSwap.addEventListener("click", handleSwapFormWithChessBoard);
 
 const form = document.querySelector("form")!;
 
-function handleSubmit(event: Event) {
-  const characters = ["a", "b", "c", "d", "e", "f", "g", "h"];
-  event.preventDefault();
-  knight.stopAnimation();
+function getFormData() {
   const formElements = form.elements;
   const elementNames = ["start-x", "start-y", "end-x", "end-y"];
   const results = elementNames.map(
@@ -50,10 +47,18 @@ function handleSubmit(event: Event) {
       +(formElements.namedItem(name)! as HTMLSelectElement).value
   );
   const start = new Position(results[0], results[1]);
-  const tree = new Tree(start);
   const end = new Position(results[2], results[3]);
+  return { start, end };
+}
+
+function handleSubmit(event: Event) {
+  const characters = ["a", "b", "c", "d", "e", "f", "g", "h"];
+  event.preventDefault();
+  knight.stopAnimation();
+  const formData = getFormData();
+  const tree = new Tree(formData.start);
   tree.buildTree();
-  const shortestPath = tree.findShortestPathTo(end);
+  const shortestPath = tree.findShortestPathTo(formData.end);
   knight.positions = shortestPath;
   knight.animate();
   shortestPathPElement.innerHTML = "Shortest Path: <br>";

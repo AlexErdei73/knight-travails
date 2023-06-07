@@ -11,28 +11,28 @@ const buttonSwap = document.querySelector("#btn-swap")!;
 const shortestPathPElement = document.querySelector("#shortest-path")!;
 
 function handleSwapFormWithChessBoard() {
-  // The main point is toggling the visible element
-  // the rest is just the animation
-  const ANIMATION_DURATION = 500;
-  const DELAY = 20;
-  if (buttonSwap.textContent === "Form") {
-    buttonSwap.textContent = "Chess";
-    chessBoard.boardContainer.classList.add("spin-out");
-  } else {
-    buttonSwap.textContent = "Form";
-    formContainer.classList.add("spin-out");
-  }
-  setTimeout(() => {
-    formContainer.classList.toggle("invisible");
-    chessBoard.boardContainer.classList.toggle("invisible");
-  }, ANIMATION_DURATION);
-  setTimeout(() => {
-    if (formContainer.classList.contains("invisible")) {
-      chessBoard.boardContainer.classList.remove("spin-out");
-    } else {
-      formContainer.classList.remove("spin-out");
-    }
-  }, ANIMATION_DURATION + DELAY); //The previous step takes a few ms, hence the delay
+	// The main point is toggling the visible element
+	// the rest is just the animation
+	const ANIMATION_DURATION = 500;
+	const DELAY = 20;
+	if (buttonSwap.textContent === "Form") {
+		buttonSwap.textContent = "Chess";
+		chessBoard.boardContainer.classList.add("spin-out");
+	} else {
+		buttonSwap.textContent = "Form";
+		formContainer.classList.add("spin-out");
+	}
+	setTimeout(() => {
+		formContainer.classList.toggle("invisible");
+		chessBoard.boardContainer.classList.toggle("invisible");
+	}, ANIMATION_DURATION);
+	setTimeout(() => {
+		if (formContainer.classList.contains("invisible")) {
+			chessBoard.boardContainer.classList.remove("spin-out");
+		} else {
+			formContainer.classList.remove("spin-out");
+		}
+	}, ANIMATION_DURATION + DELAY); //The previous step takes a few ms, hence the delay
 }
 
 buttonSwap.addEventListener("click", handleSwapFormWithChessBoard);
@@ -40,40 +40,44 @@ buttonSwap.addEventListener("click", handleSwapFormWithChessBoard);
 const form = document.querySelector("form")!;
 
 function getFormData() {
-  const formElements = form.elements;
-  const elementNames = ["start-x", "start-y", "end-x", "end-y"];
-  const results = elementNames.map(
-    (name: string) =>
-      +(formElements.namedItem(name)! as HTMLSelectElement).value
-  );
-  const start = new Position(results[0], results[1]);
-  const end = new Position(results[2], results[3]);
-  return { start, end };
+	const formElements = form.elements;
+	const elementNames = ["start-x", "start-y", "end-x", "end-y"];
+	const results = elementNames.map(
+		(name: string) =>
+			+(formElements.namedItem(name)! as HTMLSelectElement).value
+	);
+	const start = new Position(results[0], results[1]);
+	const end = new Position(results[2], results[3]);
+	return { start, end };
 }
 
 function calcShortestPath(formData: {
-  start: Position;
-  end: Position;
+	start: Position;
+	end: Position;
 }): [x: number, y: number][] {
-  const tree = new Tree(formData.start);
-  tree.buildTree();
-  return tree.findShortestPathTo(formData.end);
+	const tree = new Tree(formData.start);
+	tree.buildTree();
+	return tree.findShortestPathTo(formData.end);
+}
+
+function output(shortestPath: [x: number, y: number][]) {
+	const characters = ["a", "b", "c", "d", "e", "f", "g", "h"];
+	shortestPathPElement.innerHTML = "Shortest Path: <br>";
+	shortestPath.forEach((pos, index) => {
+		shortestPathPElement.innerHTML += `${index}. ${characters[pos[0]]}${
+			pos[1] + 1
+		} <br>`;
+	});
 }
 
 function handleSubmit(event: Event) {
-  const characters = ["a", "b", "c", "d", "e", "f", "g", "h"];
-  event.preventDefault();
-  knight.stopAnimation();
-  const formData = getFormData();
-  const shortestPath = calcShortestPath(formData);
-  knight.positions = shortestPath;
-  knight.animate();
-  shortestPathPElement.innerHTML = "Shortest Path: <br>";
-  shortestPath.forEach((pos, index) => {
-    shortestPathPElement.innerHTML += `${index}. ${characters[pos[0]]}${
-      pos[1] + 1
-    } <br>`;
-  });
+	event.preventDefault();
+	knight.stopAnimation();
+	const formData = getFormData();
+	const shortestPath = calcShortestPath(formData);
+	output(shortestPath);
+	knight.positions = shortestPath;
+	knight.animate();
 }
 
 form.addEventListener("submit", handleSubmit);

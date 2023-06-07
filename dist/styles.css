@@ -100,3 +100,7 @@ form {
 .invisible {
   display: none;
 }
+
+#shortest-path {
+  margin-left: 0.5rem;
+}

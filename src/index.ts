@@ -8,6 +8,7 @@ knight.animate();
 
 const formContainer = document.querySelector(".form-container")!;
 const buttonSwap = document.querySelector("#btn-swap")!;
+const shortestPathPElement = document.querySelector("#shortest-path")!;
 
 function handleSwapFormWithChessBoard() {
   // The main point is toggling the visible element
@@ -39,11 +40,12 @@ buttonSwap.addEventListener("click", handleSwapFormWithChessBoard);
 const form = document.querySelector("form")!;
 
 function handleSubmit(event: Event) {
+  const characters = ["a", "b", "c", "d", "e", "f", "g", "h"];
   event.preventDefault();
   knight.stopAnimation();
   const formElements = form.elements;
-  const names = ["start-x", "start-y", "end-x", "end-y"];
-  const results = names.map(
+  const elementNames = ["start-x", "start-y", "end-x", "end-y"];
+  const results = elementNames.map(
     (name: string) =>
       +(formElements.namedItem(name)! as HTMLSelectElement).value
   );
@@ -54,7 +56,12 @@ function handleSubmit(event: Event) {
   const shortestPath = tree.findShortestPathTo(end);
   knight.positions = shortestPath;
   knight.animate();
-  console.log(shortestPath);
+  shortestPathPElement.innerHTML = "Shortest Path: <br>";
+  shortestPath.forEach((pos, index) => {
+    shortestPathPElement.innerHTML += `${index}. ${characters[pos[0]]}${
+      pos[1] + 1
+    } <br>`;
+  });
 }
 
 form.addEventListener("submit", handleSubmit);

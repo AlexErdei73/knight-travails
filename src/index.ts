@@ -1,6 +1,6 @@
 import chessBoard from "./chessBoard";
 import knight from "./knight";
-import { Tree, TreeNode, Position } from "./tree";
+import { Tree, Position } from "./tree";
 
 chessBoard.create();
 knight.positions = [[0, 0]];
@@ -51,9 +51,10 @@ function handleSubmit(event: Event) {
   const tree = new Tree(start);
   const end = new Position(results[2], results[3]);
   tree.buildTree();
-  knight.positions = tree.findRout(end);
+  const shortestPath = tree.findShortestPathTo(end);
+  knight.positions = shortestPath;
   knight.animate();
-  console.log(tree.findRout(end));
+  console.log(shortestPath);
 }
 
 form.addEventListener("submit", handleSubmit);

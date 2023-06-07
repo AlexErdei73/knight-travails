@@ -110,7 +110,7 @@ export class Tree {
     return this.root;
   }
 
-  findRout(end: Position): [x: number, y: number][] {
+  findShortestPathTo(end: Position): [x: number, y: number][] {
     const positionStack: [x: number, y: number][] = [];
     let node = this.find(end);
     while (node) {

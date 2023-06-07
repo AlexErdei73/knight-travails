@@ -51,14 +51,21 @@ function getFormData() {
   return { start, end };
 }
 
+function calcShortestPath(formData: {
+  start: Position;
+  end: Position;
+}): [x: number, y: number][] {
+  const tree = new Tree(formData.start);
+  tree.buildTree();
+  return tree.findShortestPathTo(formData.end);
+}
+
 function handleSubmit(event: Event) {
   const characters = ["a", "b", "c", "d", "e", "f", "g", "h"];
   event.preventDefault();
   knight.stopAnimation();
   const formData = getFormData();
-  const tree = new Tree(formData.start);
-  tree.buildTree();
-  const shortestPath = tree.findShortestPathTo(formData.end);
+  const shortestPath = calcShortestPath(formData);
   knight.positions = shortestPath;
   knight.animate();
   shortestPathPElement.innerHTML = "Shortest Path: <br>";

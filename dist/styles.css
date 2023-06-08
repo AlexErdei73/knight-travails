@@ -31,6 +31,12 @@ body {
 	background: black;
 }
 
+.col-label {
+	position: absolute;
+	top: calc(100% + 0.125rem);
+	color: white;
+}
+
 .knight {
 	width: 12.5%;
 	height: auto;
@@ -90,7 +96,7 @@ form {
 
 #btn-swap {
 	display: block;
-	margin: 1rem auto;
+	margin: 1.25rem auto;
 }
 
 .invisible {

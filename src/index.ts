@@ -37,6 +37,13 @@ class Main {
 				this.formContainer.classList.remove("spin-out");
 			}
 		}, ANIMATION_DURATION + DELAY); //The previous step takes a few ms, hence the delay
+		setTimeout(() => {
+			if (chessBoard.boardContainer.classList.contains("invisible")) {
+				knight.stopAnimation();
+			} else {
+				knight.animate();
+			}
+		}, 2 * ANIMATION_DURATION + DELAY);
 	}
 
 	private getFormData() {
@@ -72,12 +79,10 @@ class Main {
 
 	private handleSubmit(event: Event) {
 		event.preventDefault();
-		knight.stopAnimation();
 		const formData = this.getFormData();
 		const shortestPath = this.calcShortestPath(formData);
 		this.output(shortestPath);
 		knight.positions = shortestPath;
-		knight.animate();
 	}
 
 	private sizeFormContainer() {

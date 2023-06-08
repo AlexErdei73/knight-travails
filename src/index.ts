@@ -7,6 +7,7 @@ class Main {
 	private buttonSwap = document.querySelector("#btn-swap")!;
 	private shortestPathPElement = document.querySelector("#shortest-path")!;
 	private form = document.querySelector("form")!;
+	private largeKnightImg = document.querySelector(".large")!;
 	constructor() {
 		this.handleSwapFormWithChessBoard =
 			this.handleSwapFormWithChessBoard.bind(this);
@@ -89,6 +90,8 @@ class Main {
 		let height = window.innerHeight - 160;
 		if (height > 500) height = 500;
 		if (height < 150) height = 150;
+		if (height < 250) this.largeKnightImg.classList.add("invisible");
+		else this.largeKnightImg.classList.remove("invisible");
 		this.formContainer.setAttribute(
 			"style",
 			`height: ${height}px; width: ${height}px`

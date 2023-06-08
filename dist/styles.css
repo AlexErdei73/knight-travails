@@ -52,6 +52,14 @@ body {
 	position: absolute;
 }
 
+.large {
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	width: 40%;
+	z-index: 0;
+}
+
 .animate {
 	transition: all 0.5s linear;
 }
@@ -79,11 +87,14 @@ body {
 	margin: auto;
 	overflow-y: auto;
 	overflow-x: hidden;
+	position: relative;
 }
 
 form {
 	width: calc(100% - 1rem);
 	margin: 0.5rem;
+	z-index: 10;
+	position: relative;
 }
 
 .form-control {
@@ -111,4 +122,6 @@ form {
 
 #shortest-path {
 	margin-left: 0.5rem;
+	position: relative;
+	z-index: 10;
 }

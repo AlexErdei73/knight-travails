@@ -84,6 +84,7 @@ class Main {
 		const shortestPath = this.calcShortestPath(formData);
 		this.output(shortestPath);
 		knight.positions = shortestPath;
+		chessBoard.positions = shortestPath;
 	}
 
 	private sizeFormContainer() {

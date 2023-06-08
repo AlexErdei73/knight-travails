@@ -1,5 +1,7 @@
 class ChessBoard {
 	boardContainer: HTMLElement;
+	private _positions: [x: number, y: number][] = [];
+	LETTERS = ["a", "b", "c", "d", "e", "f", "g", "h"];
 	constructor(boardContainer: HTMLElement) {
 		this.boardContainer = boardContainer;
 	}
@@ -8,9 +10,8 @@ class ChessBoard {
 		for (let row = 0; row < 8; row++) {
 			for (let col = 0; col < 8; col++) {
 				if (row === 0) {
-					const letters = ["a", "b", "c", "d", "e", "f", "g", "h"];
 					const colLabelDiv = document.createElement("div");
-					colLabelDiv.textContent = letters[col];
+					colLabelDiv.textContent = this.LETTERS[col];
 					colLabelDiv.classList.add("col-label");
 					colLabelDiv.setAttribute(
 						"style",
@@ -37,9 +38,40 @@ class ChessBoard {
 					if (color === "bright") color = "dark";
 					else color = "bright";
 				boardCell.classList.add(color);
+				const id = `${this.LETTERS[7 - row]}${col + 1}`;
+				boardCell.id = id;
 				this.boardContainer.appendChild(boardCell);
 			}
 		}
+	}
+
+	private getAllGameCells() {
+		return document.querySelectorAll(".board-cell");
+	}
+
+	private filterElementsOfPath() {
+		const ids = this._positions.map(
+			(pos) => `${this.LETTERS[pos[1]]}${pos[0] + 1}`
+		);
+		return Array.from(this.getAllGameCells()).filter(
+			(cell) => ids.indexOf(cell.id) !== -1
+		);
+	}
+
+	private selectElementsOfPath() {
+		this.filterElementsOfPath().forEach((element) =>
+			element.classList.add("selected")
+		);
+	}
+
+	private removeAllSelections() {
+		this.getAllGameCells().forEach((cell) => cell.classList.remove("selected"));
+	}
+
+	set positions(positions: [x: number, y: number][]) {
+		this._positions = positions;
+		this.removeAllSelections();
+		this.selectElementsOfPath();
 	}
 }
 

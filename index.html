@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./styles.css" />
+		<title>Knight Travails</title>
+	</head>
+
+	<body>
+		<h1 class="title">Knight Travails</h1>
+		<div class="chess-board animate">
+			<img src="../public/knight.jpg" alt="knight" class="knight" />
+		</div>
+		<div class="form-container animate spin-out invisible">
+			<form action="">
+				<div class="form-control">
+					<label for="start-x">Start Position</label>
+					<div>
+						<select name="start-x" id="start-x">
+							<option value="0">a</option>
+							<option value="1">b</option>
+							<option value="2">c</option>
+							<option value="3">d</option>
+							<option value="4">e</option>
+							<option value="5">f</option>
+							<option value="6">g</option>
+							<option value="7">h</option>
+						</select>
+						<select name="start-y" id="start-y">
+							<option value="0">1</option>
+							<option value="1">2</option>
+							<option value="2">3</option>
+							<option value="3">4</option>
+							<option value="4">5</option>
+							<option value="5">6</option>
+							<option value="6">7</option>
+							<option value="7">8</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-control">
+					<label for="wnd-x">End Position</label>
+					<div>
+						<select name="emd-x" id="end-x">
+							<option value="0">a</option>
+							<option value="1">b</option>
+							<option value="2">c</option>
+							<option value="3">d</option>
+							<option value="4">e</option>
+							<option value="5">f</option>
+							<option value="6">g</option>
+							<option value="7">h</option>
+						</select>
+						<select name="end-y" id="end-y">
+							<option value="0">1</option>
+							<option value="1">2</option>
+							<option value="2">3</option>
+							<option value="3">4</option>
+							<option value="4">5</option>
+							<option value="5">6</option>
+							<option value="6">7</option>
+							<option value="7">8</option>
+						</select>
+					</div>
+				</div>
+				<button type="submit" class="btn">Submit</button>
+			</form>
+			<p id="shortest-path"></p>
+			<img src="../public/knight.jpg" alt="knight" class="knight large" />
+		</div>
+		<button type="button" class="btn" id="btn-swap">Form</button>
+		<script src="main.js"></script>
+	</body>
+</html>

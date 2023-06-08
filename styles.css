@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Playball&display=swap");
+
+body {
+	background: gray;
+}
+
+.title {
+	text-align: center;
+	font-family: "Playball", cursive;
+	color: white;
+	transition: color 0.5s ease-in-out;
+}
+
+.black {
+	color: black;
+}
+
+.chess-board {
+	width: 100%;
+	max-width: min(500px, calc(100vh - 10rem));
+	min-width: 150px;
+	background: lightgray;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	margin: auto;
+}
+
+.board-cell {
+	width: 12.5%;
+	height: 0;
+	padding-bottom: 12.5%;
+	box-sizing: border-box;
+}
+
+.bright {
+	background: lightgray;
+}
+
+.dark {
+	background: black;
+}
+
+.selected {
+	border: 3px solid red;
+	padding-bottom: calc(12.5% - 6px);
+}
+
+.col-label {
+	position: absolute;
+	top: calc(100% + 0.125rem);
+	color: white;
+}
+
+.row-label {
+	position: absolute;
+	left: -0.875rem;
+	color: white;
+}
+
+.knight {
+	width: 12.5%;
+	height: auto;
+	border-radius: 50%;
+	border: 2px solid black;
+	box-sizing: border-box;
+	position: absolute;
+}
+
+.large {
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	width: 40%;
+	z-index: 0;
+}
+
+.animate {
+	transition-property: transform, opacity, top, left;
+	transition-duration: 500ms;
+	transition-timing-function: linear;
+}
+
+.spin-out {
+	transform: rotateZ(180deg) scale(0.5);
+	opacity: 0;
+}
+
+.btn {
+	background: darkblue;
+	color: white;
+	padding: 0.5rem;
+	border: none;
+	width: 5rem;
+	border-radius: 5px;
+}
+
+.btn:hover {
+	background: blue;
+}
+
+.form-container {
+	background: lightgray;
+	margin: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+	position: relative;
+}
+
+form {
+	width: calc(100% - 1rem);
+	margin: 0.5rem;
+	z-index: 10;
+	position: relative;
+}
+
+.form-control {
+	width: 100%;
+	margin-bottom: 0.5rem;
+}
+
+.form-control label {
+	display: inline-block;
+	width: 130px;
+}
+
+.form-control div {
+	display: inline-block;
+}
+
+#btn-swap {
+	display: block;
+	margin: 1.25rem auto;
+}
+
+.invisible {
+	display: none;
+}
+
+#shortest-path {
+	margin-left: 0.5rem;
+	position: relative;
+	z-index: 10;
+}

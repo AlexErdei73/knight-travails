@@ -1,9 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Playball&display=swap");
+
 body {
 	background: gray;
 }
 
 .title {
 	text-align: center;
+	font-family: "Playball", cursive;
+	color: white;
+	transition: color 0.5s ease-in-out;
+}
+
+.black {
+	color: black;
 }
 
 .chess-board {
@@ -61,7 +70,9 @@ body {
 }
 
 .animate {
-	transition: all 0.5s linear;
+	transition-property: transform, opacity, top, left;
+	transition-duration: 500ms;
+	transition-timing-function: linear;
 }
 
 .spin-out {

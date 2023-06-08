@@ -8,6 +8,7 @@ class Main {
 	private shortestPathPElement = document.querySelector("#shortest-path")!;
 	private form = document.querySelector("form")!;
 	private largeKnightImg = document.querySelector(".large")!;
+	ANIMATION_DURATION = 500;
 	constructor() {
 		this.handleSwapFormWithChessBoard =
 			this.handleSwapFormWithChessBoard.bind(this);
@@ -18,7 +19,6 @@ class Main {
 	private handleSwapFormWithChessBoard() {
 		// The main point is toggling the visible element
 		// the rest is just the animation
-		const ANIMATION_DURATION = 500;
 		const DELAY = 20;
 		if (this.buttonSwap.textContent === "Form") {
 			this.buttonSwap.textContent = "Chess";
@@ -30,21 +30,21 @@ class Main {
 		setTimeout(() => {
 			this.formContainer.classList.toggle("invisible");
 			chessBoard.boardContainer.classList.toggle("invisible");
-		}, ANIMATION_DURATION);
+		}, this.ANIMATION_DURATION);
 		setTimeout(() => {
 			if (this.formContainer.classList.contains("invisible")) {
 				chessBoard.boardContainer.classList.remove("spin-out");
 			} else {
 				this.formContainer.classList.remove("spin-out");
 			}
-		}, ANIMATION_DURATION + DELAY); //The previous step takes a few ms, hence the delay
+		}, this.ANIMATION_DURATION + DELAY); //The previous step takes a few ms, hence the delay
 		setTimeout(() => {
 			if (chessBoard.boardContainer.classList.contains("invisible")) {
 				knight.stopAnimation();
 			} else {
 				knight.animate();
 			}
-		}, 2 * ANIMATION_DURATION + DELAY);
+		}, 2 * this.ANIMATION_DURATION + DELAY);
 	}
 
 	private getFormData() {
@@ -98,6 +98,13 @@ class Main {
 		);
 	}
 
+	private animateTitle() {
+		const titleElement = document.querySelector(".title")!;
+		setInterval(() => {
+			titleElement.classList.toggle("black");
+		}, this.ANIMATION_DURATION);
+	}
+
 	run() {
 		chessBoard.create();
 		this.buttonSwap.addEventListener(
@@ -107,6 +114,7 @@ class Main {
 		this.form.addEventListener("submit", this.handleSubmit);
 		window.addEventListener("resize", this.sizeFormContainer);
 		this.sizeFormContainer();
+		this.animateTitle();
 	}
 }
 
